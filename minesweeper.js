@@ -41,12 +41,12 @@ const createMatrix = v => Array(width).fill([]).map(
     () => Array(height).fill(v)
 )
 
-const field = createMatrix(0)
+let field = createMatrix(0)
 let uncoveredField = createMatrix(false)
-const flaggedField = createMatrix(false)
+let flaggedField = createMatrix(false)
 
 const setMines = () => {
-    const minesLeft= mines
+    let minesLeft= mines
     while(minesLeft--) {
         const mineX = Math.round(Math.random() * (width-1))
         const mineY = Math.round(Math.random() * (height-1))
@@ -129,6 +129,7 @@ let playerX = 0
 let playerY = 0
 let hasLost = false
 let hasWon = false
+setMines()
 
 renderField(playerX, playerY)
 
@@ -150,7 +151,7 @@ process.stdin.on('keypress', (character, key) => {
         if(key.name === 'up' && playerY > 0)
             playerY--
 
-        if(key.name === 'e') {
+        if(key.name === 'return') {
             uncoverCoords(playerX, playerY)
             
             if(field[playerY][playerX] === 'm') {
@@ -163,15 +164,30 @@ process.stdin.on('keypress', (character, key) => {
             flaggedField[playerY][playerX] = !flaggedField[playerY][playerX]
             hasWon = checkIfWon()
         }
+    } else {
+        if(key.name === 'return') {
+            field= createMatrix(0)
+            uncoveredField= createMatrix(false)
+            flaggedField= createMatrix(false)
+            playerX= 0
+            playerY= 0
+            hasLost= false
+            hasWon= false
+            setMines()
+        }
     }
 
     renderField(playerX, playerY)
 
-    if(hasLost)
-        console.log('Lost :(')
+    if(hasLost) {
+        console.log('Lost :(\n')
+        console.log('Press ENTER to play again? (Ctrl+C to abort)')
+    }
     
-    if(hasWon)
-        console.log('Won :)')
+    if(hasWon) {
+        console.log('Won :)\n')
+        console.log('Press ENTER to play again? (Ctrl+C to abort)')
+    }
     
     if(key.name === 'c' && key.ctrl)
         process.exit(0)
