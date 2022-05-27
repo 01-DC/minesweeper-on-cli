@@ -100,7 +100,7 @@ const renderField = (playerX, playerY) => {
             else if(uncoveredField[y][x])
                 row+= characterMap[field[y][x]]
             else
-                row+= ' '
+                row+= '  '
 
             if(x === playerX && y === playerY)
                 row += '\x1b[0m'
