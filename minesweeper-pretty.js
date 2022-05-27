@@ -73,43 +73,43 @@ const checkIfWon = () => {
 }
 
 const characterMap = {
-    m: '[x]',
-    0: ' 0 ',
-    1: ' 1 ',
-    2: ' 2 ',
-    3: ' 3 ',
-    4: ' 4 ',
-    5: ' 5 ',
-    6: ' 6 ',
-    7: ' 7 ',
-    8: ' 8 ',
+    m: '💣',
+    0: '⬜',
+    1: '1️⃣ ',
+    2: '2️⃣ ',
+    3: '3️⃣ ',
+    4: '4️⃣ ',
+    5: '5️⃣ ',
+    6: '6️⃣ ',
+    7: '7️⃣ ',
+    8: '8️⃣ ',
 }
 
 const renderField = (playerX, playerY) => {
     console.clear()
-    console.log('==='.repeat(width + 2))
+    console.log('🧱'.repeat(width + 2))
 
     for(let y=0; y<height; ++y) {
-        let row= '|||'
+        let row= '🧱'
         for(let x=0; x<width; ++x) {
             if(x===playerX && y===playerY)
                 row+= '\x1b[47m\x1b[30m'
             
             if(flaggedField[y][x])
-                row += '<|>'
+                row += '🚩'
             else if(uncoveredField[y][x])
                 row+= characterMap[field[y][x]]
             else
-                row+= '   '
+                row+= '  '
 
             if(x === playerX && y === playerY)
                 row += '\x1b[0m'
         }
-        row += '|||'
+        row += '🧱'
         console.log(row)
     }
 
-    console.log('==='.repeat(width + 2))
+    console.log('🧱'.repeat(width + 2))
     console.log('Press ENTER to uncover a field, SPACE to place a flag')
 }
 
