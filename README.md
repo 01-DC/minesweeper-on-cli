@@ -19,7 +19,7 @@ Play minesweeper on the command line. You can play either ascii character mode o
 - Open the folder.
 - Execute using Node.js:
     - For ascii mode
-    ```node minesweeper.js --height=10 --width=10 --mines=20```
+    ```node minesweeper --height=10 --width=10 --mines=20```
     - For emoji mode
-    ```node minesweeper-pretty.js --height=10 --width=10 --mines=20```
+    ```node minesweeper-pretty --height=10 --width=10 --mines=20```
 - Use *Arrow Keys* to move cursor and *Enter* or *Spacebar* for actions.

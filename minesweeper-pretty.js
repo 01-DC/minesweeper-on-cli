@@ -1,21 +1,23 @@
+#! usr/bin/env node
+
 const getArg = (args, name) => {
     const match= args.match(new RegExp('--' + name + '=(\\d+)'))
 
-    if(match == null)
-        throw new Error('Missing argument' + name)
+    if(match === null)
+        return null
 
     return parseInt(match[1])
 }
 
-let width= 0
-let height= 0
-let mines= 0
+let width= 10
+let height= 10
+let mines= 10
 
 try {
     const args= process.argv.slice(2).join(' ')
-    width= getArg(args, 'width')
-    height= getArg(args, 'height')
-    mines= getArg(args, 'mines')
+    width= getArg(args, 'width') || width
+    height= getArg(args, 'height') || height
+    mines= getArg(args, 'mines') || mines
 
     if(width<1 || height<1)
         throw new Error('Field size must be positive')
