@@ -1,4 +1,4 @@
-#! usr/bin/env node
+#!/usr/bin/env node
 const minesweeperPretty = require("./minesweeper-pretty")
 const minesweeperAscii = require("./minesweeper-ascii")
 
