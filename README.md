@@ -34,11 +34,11 @@ Has two optional arguments:
 - Execute ```npm i minesweeper-on-cli```
 - Create a .js file with code:
     ```javascript
-    const minesweeperPretty = require('minesweeperPretty')
-    const minesweeperAscii = require('minesweeperAscii')
+    const minePretty = require('minesweeper-on-cli/minesweeper-pretty')
+    const mineAscii = require('minesweeper-on-cli/minesweeper-ascii')
 
     let size= 10
     let mines= 10
-    minesweeperPretty(size, mines)
-    // minesweeperPretty(size, mines)
+    minePretty(size, mines)
+    // mineAscii(size, mines)
     ```
