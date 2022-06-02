@@ -13,7 +13,7 @@ function minesweeperAscii(width, height, mines)
         y>=0 && x>=0 && x<width && y<height
     ))
 
-    const createMatrix = v => Array(width).fill([]).map(
+    const createMatrix = (v) => Array(width).fill([]).map(
         () => Array(height).fill(v)
     )
 
