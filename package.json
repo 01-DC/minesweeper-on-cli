@@ -1,6 +1,6 @@
 {
   "name": "minesweeper-on-cli",
-  "version": "1.1.0",
+  "version": "1.3.0",
   "description": "Play minesweeper on the command line. You can play either ascii character mode or unicode symbol mode depending on the font style supported by your terminal. Node.js is required.",
   "main": "index.js",
   "scripts": {

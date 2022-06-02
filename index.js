@@ -10,8 +10,7 @@ const rl = readline.createInterface({
 
 const prompt = (query) => new Promise((resolve) => rl.question(query, resolve))
 
-let width= 10
-let height= 10
+let size= 10
 let mines= 10
 let pretty= false
 
@@ -27,11 +26,10 @@ function getArg(args, name) {
 function readArgs() {
     try {
         const args= process.argv.slice(2).join(' ')
-        width= getArg(args, 'size') || width
-        height= getArg(args, 'size') || height
+        size= getArg(args, 'size') || size
         mines= getArg(args, 'mines') || mines
 
-        if(width<1 || height<1)
+        if(size<1)
             throw new Error('Field size must be positive')
     } catch(e) {
         console.error(e)
@@ -50,9 +48,9 @@ async function ask() {
         console.log("Invalid choice. Defaulting to ascii mode.")
     
     if(pretty)
-        minesweeperPretty(width, height, mines)
+        minesweeperPretty(size, mines)
     else
-        minesweeperAscii(width, height, mines)
+        minesweeperAscii(size, mines)
 }
 
 ask()

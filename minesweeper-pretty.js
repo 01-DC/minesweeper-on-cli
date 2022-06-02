@@ -1,4 +1,4 @@
-function minesweeperPretty(width, height, mines)
+function minesweeperPretty(size, mines)
 {   
     const getNeighbouringCoords = (x, y) => [
         [y, x+1],
@@ -10,11 +10,11 @@ function minesweeperPretty(width, height, mines)
         [y+1, x+1],
         [y+1, x-1]
     ].filter(([y, x]) => (
-        y>=0 && x>=0 && x<width && y<height
+        y>=0 && x>=0 && x<size && y<size
     ))
 
-    const createMatrix = v => Array(width).fill([]).map(
-        () => Array(height).fill(v)
+    const createMatrix = (v) => Array(size).fill([]).map(
+        () => Array(size).fill(v)
     )
 
     let field = createMatrix(0)
@@ -24,8 +24,8 @@ function minesweeperPretty(width, height, mines)
     const setMines = () => {
         let minesLeft= mines
         while(minesLeft--) {
-            const mineX = Math.round(Math.random() * (width-1))
-            const mineY = Math.round(Math.random() * (height-1))
+            const mineX = Math.round(Math.random() * (size-1))
+            const mineY = Math.round(Math.random() * (size-1))
 
             if(field[mineY][mineX] !== 'm') {
                 field[mineY][mineX] = 'm'
@@ -63,11 +63,11 @@ function minesweeperPretty(width, height, mines)
 
     const renderField = (playerX, playerY) => {
         console.clear()
-        console.log('🧱'.repeat(width + 2))
+        console.log('🧱'.repeat(size + 2))
 
-        for(let y=0; y<height; ++y) {
+        for(let y=0; y<size; ++y) {
             let row= '🧱'
-            for(let x=0; x<width; ++x) {
+            for(let x=0; x<size; ++x) {
                 if(x===playerX && y===playerY)
                     row+= '\x1b[47m\x1b[30m'
                 
@@ -85,7 +85,7 @@ function minesweeperPretty(width, height, mines)
             console.log(row)
         }
 
-        console.log('🧱'.repeat(width + 2))
+        console.log('🧱'.repeat(size + 2))
         console.log('Press ENTER to uncover a field, SPACE to place a flag')
     }
 
@@ -115,13 +115,13 @@ function minesweeperPretty(width, height, mines)
 
     process.stdin.on('keypress', (character, key) => {
         if(!hasLost && !hasWon) {
-            if(key.name === 'right' && playerX < width-1)
+            if(key.name === 'right' && playerX < size-1)
                 playerX++
             
             if(key.name === 'left' && playerX > 0)
                 playerX--
 
-            if(key.name === 'down' && playerY < height-1)
+            if(key.name === 'down' && playerY < size-1)
                 playerY++
             
             if(key.name === 'up' && playerY > 0)
@@ -132,7 +132,7 @@ function minesweeperPretty(width, height, mines)
                 
                 if(field[playerY][playerX] === 'm') {
                     hasLost = true
-                    uncoveredField = Array(height).fill([]).map(() => Array(width).fill(true))
+                    uncoveredField = Array(size).fill([]).map(() => Array(size).fill(true))
                 }
             }
 
