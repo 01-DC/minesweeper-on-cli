@@ -1,4 +1,6 @@
 #! usr/bin/env node
+const minesweeperPretty = require("./minesweeper-pretty")
+const minesweeperAscii = require("./minesweeper-ascii")
 
 const getArg = (args, name) => {
     const match= args.match(new RegExp('--' + name + '=(\\d+)'))
@@ -26,18 +28,4 @@ try {
     process.exit(1)
 }
 
-function minesweeper(width, height, mines) {
-    exec(`node minesweeper-pretty`, (error, stdout, stderr) => {
-        if(error) {
-            console.log(`error: ${error.message}`)
-            return
-        }
-        if(stderr) {
-            console.log(`stderr: ${stderr}`)
-            return
-        }
-        console.log(`${stdout}`)
-    })
-}
-
-minesweeper(10, 10, 10)
+minesweeperPretty(width, height, mines)
