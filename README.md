@@ -1,25 +1,44 @@
 # Minesweeper On CLI
 
 ### Description
-Play minesweeper on the command line. You can play either ascii character mode or unicode symbol mode depending on the font style supported by your terminal. Node.js is required.
+Play minesweeper on the command line. You can play either ascii character mode or unicode symbol mode depending on the font style supported by your terminal. Node.js is required. You can also play it using npm or npx.
 
 ### Emoji version
-<img alt="screenshot-5" src="./imgs/img5.png" width="735px"/>
 <img alt="screenshot-6" src="./imgs/img6.png" />
-<img alt="screenshot-7" src="./imgs/img7.png" />
 
 ### ASCII version
-<img alt="screenshot-1" src="./imgs/img1.png" />
-<img alt="screenshot-2" src="./imgs/img2.png" />
-<img alt="screenshot-3" src="./imgs/img3.png" />
 <img alt="screenshot-4" src="./imgs/img4.png" />
 
 ### Usage
+
+##### Arguments
+Has two optional arguments:
+- ```size``` Default value is 10. Can be any integer value greater than 1. Sets the board dimensions as ```size * size```. Can be supplied using ```--size=20```.
+- ```mines``` Default value is 10. Can be positive integer value. Sets the number of mines on board. More mines for higher difficulty. Can be supplied using ```--mines=20```.
+
+##### Method 1
 - Clone the repository.
 - Open the folder.
 - Execute using Node.js:
-    - For ascii mode
-    ```node minesweeper --height=10 --width=10 --mines=20```
-    - For emoji mode
-    ```node minesweeper-pretty --height=10 --width=10 --mines=20```
+    ```node index```
+- Follow the prompts on screen.
 - Use *Arrow Keys* to move cursor and *Enter* or *Spacebar* for actions.
+
+##### Method 2
+- Open terminal.
+- Execute ```npx minesweeper-on-cli```
+- Enter ```y``` when prompted.
+
+##### Method 3
+- Open terminal in a folder containing npm.
+- Execute ```npm i minesweeper-on-cli```
+- Create a .js file with code:
+    ```javascript
+    const minesweeperPretty = require('minesweeperPretty')
+    const minesweeperAscii = require('minesweeperAscii')
+
+    let size= 10
+    let mines= 10
+    minesweeperPretty(size, mines)
+    // minesweeperPretty(size, mines)
+    ```

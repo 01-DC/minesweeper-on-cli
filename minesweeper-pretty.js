@@ -1,4 +1,4 @@
-function minesweeperPretty(size, mines)
+function minesweeperPretty(size= 10, mines= 10)
 {   
     const getNeighbouringCoords = (x, y) => [
         [y, x+1],
