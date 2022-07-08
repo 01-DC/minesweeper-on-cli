@@ -165,8 +165,10 @@ function minesweeperAscii(size= 10, mines= 10)
             console.log('Press ENTER to play again? (Ctrl+C to abort)')
         }
         
-        if(key.name === 'c' && key.ctrl)
+        if(key.name === 'c' && key.ctrl) {
+            console.log('Thanks for playing! Made by 01-DC')
             process.exit(0)
+        }
     })
 }
 
